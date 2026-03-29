@@ -114,7 +114,7 @@ export default function Home() {
             </div>
           </div>
           {/* Neural Sphere */}
-          <div style={{ position: "absolute", right: -100, top: 0, width: "55%", height: "100%", zIndex: 1 }}>
+          <div className="hero-canvas-mobile" style={{ position: "absolute", right: -100, top: 0, width: "55%", height: "100%", zIndex: 1 }}>
             <NeuralSphere3D />
           </div>
         </section>
@@ -182,7 +182,7 @@ export default function Home() {
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#f8fafc" }}>Browse by Category</h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
               {categories.map(cat => (
                 <Link key={cat.slug} href={`/${cat.slug}`} style={{ textDecoration: "none" }}>
                   <div className="card-border" style={{ padding: 28, transition: "all 0.3s ease" }}>
@@ -203,7 +203,7 @@ export default function Home() {
             <div style={{ textAlign: "center", marginBottom: 80 }}>
               <h2 style={{ fontSize: "clamp(36px,4vw,52px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#f8fafc" }}>Our Review Process</h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
+            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
               {steps.map((step, i) => (
                 <div key={i} style={{ position: "relative", padding: 32 }}>
                   <div className="ghost-number">{step.n}</div>
@@ -226,7 +226,7 @@ export default function Home() {
                 <span style={{ background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Top</span> Reviews
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
               {featuredTools.map((t, i) => (
                 <Link key={t.slug} href={`/${t.slug}`} style={{ textDecoration: "none" }}>
                   <div className="card-border" style={{ padding: 28, transition: "transform 0.3s ease, box-shadow 0.3s ease" }}>
@@ -257,7 +257,7 @@ export default function Home() {
             <h2 style={{ fontSize: "clamp(32px,3.5vw,48px)", fontWeight: 800, color: "#f8fafc", marginBottom: 64 }}>
               The most trusted AI tool resource
             </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+            <div className="grid-cols-4-fix" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
               {[
                 { n: "500+", label: "Tools tracked" },
                 { n: "50+", label: "In-depth reviews" },
