@@ -70,60 +70,77 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
-      <main style={{ background: "#04050f", minHeight: "100vh" }}>
+      <main style={{ background: "#04050f" }} className="min-h-screen">
+
         {/* NAV */}
-        <nav style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-          background: "rgba(4,5,15,0.85)", backdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(99,102,241,0.12)", padding: "0 clamp(16px, 4vw, 48px)",
-          height: 64, display: "flex", alignItems: "center", justifyContent: "space-between"
-        }}>
-          <span style={{ fontWeight: 800, fontSize: 20, background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <nav
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 lg:px-12 h-16"
+          style={{ background: "rgba(4,5,15,0.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(99,102,241,0.12)" }}
+        >
+          <span
+            className="font-extrabold text-xl"
+            style={{ background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+          >
             AIToolsWeekly
           </span>
-          <div style={{ display: "flex", gap: 32, fontSize: 14, color: "#64748b", flexWrap: "wrap" }}>
-            <Link href="/finder" style={{ color: "#64748b", textDecoration: "none" }}>AI Finder</Link>
-            <Link href={`/${tools[0].slug}`} style={{ color: "#64748b", textDecoration: "none" }}>Reviews</Link>
+          <div className="hidden md:flex gap-8 text-sm text-slate-500 flex-wrap">
+            <Link href="/finder" className="text-slate-500 no-underline hover:text-slate-300 transition-colors">AI Finder</Link>
+            <Link href={`/${tools[0].slug}`} className="text-slate-500 no-underline hover:text-slate-300 transition-colors">Reviews</Link>
           </div>
         </nav>
 
         {/* HERO */}
-        <section className="aurora-bg" style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "clamp(80px, 12vw, 120px) clamp(16px, 4vw, 48px) 80px", position: "relative", overflow: "hidden", flexWrap: "wrap" }}>
-          <div style={{ flex: 1, maxWidth: 640, position: "relative", zIndex: 2 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(99,102,241,0.1)", border: "1px solid rgba(99,102,241,0.2)", borderRadius: 100, padding: "6px 16px", marginBottom: 32 }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#a855f7", display: "inline-block" }} />
-              <span style={{ fontSize: 13, color: "#6366f1", fontWeight: 600 }}>500+ tools tracked · Updated weekly</span>
+        <section className="aurora-bg relative min-h-screen flex flex-col lg:flex-row items-center px-4 md:px-8 lg:px-16 pt-24 pb-16 overflow-hidden">
+          <div className="flex-1 max-w-2xl relative z-10 text-center lg:text-left">
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8"
+              style={{ background: "rgba(99,102,241,0.1)", border: "1px solid rgba(99,102,241,0.2)" }}
+            >
+              <span className="inline-block w-2 h-2 rounded-full" style={{ background: "#a855f7" }} />
+              <span className="text-xs font-semibold" style={{ color: "#6366f1" }}>500+ tools tracked · Updated weekly</span>
             </div>
-            <h1 style={{ fontSize: "clamp(48px,6vw,88px)", fontWeight: 900, lineHeight: 1.04, letterSpacing: "-0.03em", color: "#f8fafc", marginBottom: 16 }}>
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight text-slate-50 mb-4">
               {h1}
             </h1>
-            <h2 style={{ fontSize: "clamp(24px,3vw,40px)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 24 }}>
+
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight mb-6">
               <span style={{ background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Save hours.
               </span>{" "}
-              <span style={{ color: "#e2e8f0" }}>Pick the right stack.</span>
+              <span className="text-slate-200">Pick the right stack.</span>
             </h2>
-            <p style={{ fontSize: 17, color: "#64748b", lineHeight: 1.7, marginBottom: 40, maxWidth: 500 }}>
-              We test every major AI tool so you don't have to. Clear, honest comparisons updated weekly. No hype.
+
+            <p className="text-base md:text-lg text-slate-500 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+              We test every major AI tool so you don&apos;t have to. Clear, honest comparisons updated weekly. No hype.
             </p>
-            <div style={{ display: "flex", gap: 16 }}>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link href="/finder" className="btn-glow" style={{ fontSize: 16 }}>Find My AI Stack →</Link>
-              <Link href={`/${tools[0].slug}`} style={{ display: "inline-block", padding: "14px 28px", border: "1px solid rgba(99,102,241,0.3)", borderRadius: 10, color: "#6366f1", textDecoration: "none", fontSize: 16, fontWeight: 600 }}>
+              <Link
+                href={`/${tools[0].slug}`}
+                className="inline-block px-7 py-3.5 rounded-xl text-base font-semibold"
+                style={{ border: "1px solid rgba(99,102,241,0.3)", color: "#6366f1", textDecoration: "none" }}
+              >
                 Browse Reviews
               </Link>
             </div>
           </div>
-          {/* Neural Sphere */}
-          <div className="hero-canvas-mobile" style={{ position: "absolute", right: -100, top: 0, width: "55%", height: "100%", zIndex: 1 }}>
+
+          {/* Neural Sphere — hidden on mobile, visible on desktop */}
+          <div className="hidden lg:block flex-1 absolute right-0 top-0 h-full z-0" style={{ width: "55%", right: -100 }}>
             <NeuralSphere3D />
           </div>
         </section>
 
         {/* MARQUEE */}
-        <div style={{ borderTop: "1px solid rgba(99,102,241,0.08)", borderBottom: "1px solid rgba(99,102,241,0.08)", padding: "16px 0", overflow: "hidden", background: "rgba(99,102,241,0.02)" }}>
-          <div className="marquee-inner" style={{ display: "inline-flex", gap: 48, color: "#374151", fontSize: 13, fontWeight: 500 }}>
+        <div
+          className="overflow-hidden py-4"
+          style={{ borderTop: "1px solid rgba(99,102,241,0.08)", borderBottom: "1px solid rgba(99,102,241,0.08)", background: "rgba(99,102,241,0.02)" }}
+        >
+          <div className="marquee-inner inline-flex gap-12 text-slate-600 text-xs font-medium">
             {[...marqueeItems, ...marqueeItems].map((s, i) => (
-              <span key={i} style={{ display: "flex", alignItems: "center", gap: 12, whiteSpace: "nowrap" }}>
+              <span key={i} className="flex items-center gap-3 whitespace-nowrap">
                 <span style={{ color: "#6366f1" }}>◆</span> {s}
               </span>
             ))}
@@ -131,43 +148,45 @@ export default function Home() {
         </div>
 
         {/* TOOL OF THE WEEK */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal" style={{ padding: "100px 48px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <p style={{ color: "#6366f1", fontWeight: 600, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 24, textAlign: "center" }}>TOOL OF THE WEEK</p>
+        <section ref={el => addReveal(el as HTMLElement)} className="reveal px-4 md:px-8 lg:px-16 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-6 text-center" style={{ color: "#6366f1" }}>TOOL OF THE WEEK</p>
             <Link href={`/${toolOfWeek.slug}`} style={{ textDecoration: "none", display: "block" }}>
-              <div style={{
-                background: "linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.06))",
-                border: "1px solid rgba(99,102,241,0.25)", borderRadius: 24, padding: "48px",
-                display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap"
-              }}>
-                <div style={{ flex: 1, minWidth: 280 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-                    <span style={{ background: "rgba(99,102,241,0.15)", color: "#6366f1", padding: "4px 12px", borderRadius: 100, fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>
+              <div
+                className="rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center"
+                style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.06))", border: "1px solid rgba(99,102,241,0.25)" }}
+              >
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-5 flex-wrap">
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
+                      style={{ background: "rgba(99,102,241,0.15)", color: "#6366f1" }}
+                    >
                       ⭐ Featured
                     </span>
-                    <span style={{ color: "#a855f7", fontSize: 12, fontWeight: 600 }}>{toolOfWeek.commission}</span>
+                    <span className="text-xs font-semibold" style={{ color: "#a855f7" }}>{toolOfWeek.commission}</span>
                   </div>
-                  <h2 style={{ fontSize: "clamp(28px,3vw,40px)", fontWeight: 900, color: "#f8fafc", marginBottom: 16, letterSpacing: "-0.02em" }}>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4" style={{ color: "#f8fafc" }}>
                     {toolOfWeek.title}
                   </h2>
-                  <p style={{ color: "#64748b", lineHeight: 1.7, fontSize: 16, marginBottom: 24 }}>{toolOfWeek.description}</p>
-                  <div style={{ display: "flex", gap: 12 }}>
-                    <span style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", padding: "8px 16px", borderRadius: 10, fontSize: 14, fontWeight: 600 }}>
+                  <p className="text-slate-500 leading-relaxed mb-6">{toolOfWeek.description}</p>
+                  <div className="flex gap-3 flex-wrap">
+                    <span className="px-4 py-2 rounded-xl text-sm font-semibold" style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8" }}>
                       🥇 {toolOfWeek.winner}
                     </span>
-                    <span style={{ background: "rgba(168,85,247,0.1)", color: "#c084fc", padding: "8px 16px", borderRadius: 10, fontSize: 14, fontWeight: 500 }}>
+                    <span className="px-4 py-2 rounded-xl text-sm font-medium" style={{ background: "rgba(168,85,247,0.1)", color: "#c084fc" }}>
                       vs {toolOfWeek.runner_up}
                     </span>
                   </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div className="flex flex-col gap-3 w-full md:w-auto">
                   {toolOfWeek.features.slice(0, 3).map((f, i) => (
-                    <div key={i} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 12, padding: "12px 20px", minWidth: 220 }}>
-                      <div style={{ color: "#475569", fontSize: 12, marginBottom: 4 }}>{f.name}</div>
-                      <div style={{ color: "#818cf8", fontWeight: 700, fontSize: 14 }}>{f.winner}</div>
+                    <div key={i} className="rounded-xl px-5 py-3" style={{ background: "rgba(255,255,255,0.03)", minWidth: 220 }}>
+                      <div className="text-xs mb-1" style={{ color: "#475569" }}>{f.name}</div>
+                      <div className="text-sm font-bold" style={{ color: "#818cf8" }}>{f.winner}</div>
                     </div>
                   ))}
-                  <div className="btn-glow" style={{ textAlign: "center", padding: "12px 24px", fontSize: 14 }}>
+                  <div className="btn-glow text-center px-6 py-3 text-sm">
                     Read Full Review →
                   </div>
                 </div>
@@ -177,19 +196,19 @@ export default function Home() {
         </section>
 
         {/* CATEGORIES */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal" style={{ padding: "0 48px 80px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#f8fafc" }}>Browse by Category</h2>
+        <section ref={el => addReveal(el as HTMLElement)} className="reveal px-4 md:px-8 lg:px-16 pb-16 md:pb-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-50">Browse by Category</h2>
             </div>
-            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {categories.map(cat => (
                 <Link key={cat.slug} href={`/${cat.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="card-border" style={{ padding: 28, transition: "all 0.3s ease" }}>
-                    <div style={{ fontSize: 32, marginBottom: 16 }}>{cat.icon}</div>
-                    <div style={{ fontSize: 18, fontWeight: 700, color: "#e2e8f0", marginBottom: 8 }}>{cat.name}</div>
-                    <div style={{ fontSize: 13, color: "#475569" }}>{cat.desc}</div>
-                    <div style={{ color: "#6366f1", fontSize: 13, fontWeight: 600, marginTop: 16 }}>Explore →</div>
+                  <div className="card-border p-7 transition-all duration-300">
+                    <div className="text-3xl mb-4">{cat.icon}</div>
+                    <div className="text-lg font-bold mb-2" style={{ color: "#e2e8f0" }}>{cat.name}</div>
+                    <div className="text-xs" style={{ color: "#475569" }}>{cat.desc}</div>
+                    <div className="text-xs font-semibold mt-4" style={{ color: "#6366f1" }}>Explore →</div>
                   </div>
                 </Link>
               ))}
@@ -198,19 +217,23 @@ export default function Home() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal" style={{ padding: "100px 48px", background: "rgba(99,102,241,0.02)", borderTop: "1px solid rgba(99,102,241,0.06)" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ textAlign: "center", marginBottom: 80 }}>
-              <h2 style={{ fontSize: "clamp(36px,4vw,52px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#f8fafc" }}>Our Review Process</h2>
+        <section
+          ref={el => addReveal(el as HTMLElement)}
+          className="reveal px-4 md:px-8 lg:px-16 py-16 md:py-24"
+          style={{ background: "rgba(99,102,241,0.02)", borderTop: "1px solid rgba(99,102,241,0.06)" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 md:mb-20">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-50">Our Review Process</h2>
             </div>
-            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
               {steps.map((step, i) => (
-                <div key={i} style={{ position: "relative", padding: 32 }}>
+                <div key={i} className="relative p-8">
                   <div className="ghost-number">{step.n}</div>
-                  <div style={{ position: "relative", zIndex: 1 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#6366f1", marginBottom: 16, letterSpacing: "0.1em" }}>{step.n}</div>
-                    <h3 style={{ fontSize: 24, fontWeight: 800, color: "#f1f5f9", marginBottom: 12 }}>{step.title}</h3>
-                    <p style={{ color: "#64748b", lineHeight: 1.7, fontSize: 15 }}>{step.desc}</p>
+                  <div className="relative z-10">
+                    <div className="text-xs font-bold tracking-widest mb-4" style={{ color: "#6366f1" }}>{step.n}</div>
+                    <h3 className="text-2xl font-extrabold mb-3" style={{ color: "#f1f5f9" }}>{step.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -218,32 +241,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FEATURED */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal aurora-bg" style={{ padding: "100px 48px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
-              <h2 style={{ fontSize: "clamp(36px,4vw,52px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#f8fafc" }}>
+        {/* FEATURED REVIEWS */}
+        <section ref={el => addReveal(el as HTMLElement)} className="reveal aurora-bg px-4 md:px-8 lg:px-16 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-50">
                 <span style={{ background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Top</span> Reviews
               </h2>
             </div>
-            <div className="grid-cols-3-fix" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredTools.map((t, i) => (
                 <Link key={t.slug} href={`/${t.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="card-border" style={{ padding: 28, transition: "transform 0.3s ease, box-shadow 0.3s ease" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-                      <span style={{ background: "rgba(99,102,241,0.1)", color: "#6366f1", fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 100, textTransform: "uppercase" }}>
+                  <div className="card-border p-7 transition-all duration-300">
+                    <div className="flex justify-between mb-4">
+                      <span
+                        className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style={{ background: "rgba(99,102,241,0.1)", color: "#6366f1" }}
+                      >
                         {t.category}
                       </span>
-                      <span style={{ color: "#a855f7", fontSize: 12, fontWeight: 600 }}>{t.commission}</span>
+                      <span className="text-xs font-semibold" style={{ color: "#a855f7" }}>{t.commission}</span>
                     </div>
-                    <h3 style={{ fontSize: 16, fontWeight: 700, color: "#f1f5f9", lineHeight: 1.4, marginBottom: 16 }}>{t.title}</h3>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      <span style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", fontSize: 12, fontWeight: 600, padding: "4px 10px", borderRadius: 8 }}>
+                    <h3 className="text-base font-bold leading-snug mb-4" style={{ color: "#f1f5f9" }}>{t.title}</h3>
+                    <div className="flex gap-2 flex-wrap">
+                      <span
+                        className="text-xs font-semibold px-2.5 py-1 rounded-lg"
+                        style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8" }}
+                      >
                         🥇 {t.winner}
                       </span>
-                      <span style={{ color: "#475569", fontSize: 12, display: "flex", alignItems: "center" }}>vs {t.runner_up}</span>
+                      <span className="text-xs flex items-center" style={{ color: "#475569" }}>vs {t.runner_up}</span>
                     </div>
-                    <div style={{ marginTop: 20, color: "#6366f1", fontSize: 13, fontWeight: 600 }}>Read review →</div>
+                    <div className="mt-5 text-xs font-semibold" style={{ color: "#6366f1" }}>Read review →</div>
                   </div>
                 </Link>
               ))}
@@ -252,12 +281,16 @@ export default function Home() {
         </section>
 
         {/* TRUST */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal" style={{ padding: "100px 48px", background: "linear-gradient(135deg, rgba(99,102,241,0.05), rgba(168,85,247,0.03))", borderTop: "1px solid rgba(99,102,241,0.08)" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
-            <h2 style={{ fontSize: "clamp(32px,3.5vw,48px)", fontWeight: 800, color: "#f8fafc", marginBottom: 64 }}>
+        <section
+          ref={el => addReveal(el as HTMLElement)}
+          className="reveal px-4 md:px-8 lg:px-16 py-16 md:py-24"
+          style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.05), rgba(168,85,247,0.03))", borderTop: "1px solid rgba(99,102,241,0.08)" }}
+        >
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-50 mb-16">
               The most trusted AI tool resource
             </h2>
-            <div className="grid-cols-4-fix" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { n: "500+", label: "Tools tracked" },
                 { n: "50+", label: "In-depth reviews" },
@@ -265,8 +298,8 @@ export default function Home() {
                 { n: "100%", label: "Independent" },
               ].map((s, i) => (
                 <div key={i}>
-                  <div className="pulse-glow" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 900, color: "#6366f1", marginBottom: 8 }}>{s.n}</div>
-                  <div style={{ fontSize: 14, color: "#475569" }}>{s.label}</div>
+                  <div className="pulse-glow text-3xl md:text-4xl lg:text-5xl font-black mb-2" style={{ color: "#6366f1" }}>{s.n}</div>
+                  <div className="text-sm" style={{ color: "#475569" }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -274,15 +307,18 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section ref={el => addReveal(el as HTMLElement)} className="reveal" style={{ padding: "120px 48px", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(99,102,241,0.08), transparent)", pointerEvents: "none" }} />
-          <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-            <h2 style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.03em", color: "#f8fafc", marginBottom: 24 }}>
+        <section ref={el => addReveal(el as HTMLElement)} className="reveal px-4 md:px-8 lg:px-16 py-20 md:py-28 relative overflow-hidden">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(99,102,241,0.08), transparent)" }}
+          />
+          <div className="max-w-2xl mx-auto text-center relative z-10">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-50 mb-6">
               Build your{" "}
               <span style={{ background: "linear-gradient(135deg,#6366f1,#a855f7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>perfect</span>
               {" "}AI stack.
             </h2>
-            <p style={{ color: "#64748b", fontSize: 18, marginBottom: 40 }}>
+            <p className="text-base md:text-lg text-slate-500 mb-10">
               Take our 4-question quiz and get a personalized AI tool recommendation.
             </p>
             <Link href="/finder" className="btn-glow" style={{ fontSize: 18, padding: "18px 40px" }}>
@@ -291,15 +327,18 @@ export default function Home() {
           </div>
         </section>
 
-        <footer style={{ padding: "48px", borderTop: "1px solid rgba(255,255,255,0.05)", color: "#374151", fontSize: 13 }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+        <footer
+          className="px-4 md:px-8 lg:px-12 py-12 text-xs"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.05)", color: "#374151" }}
+        >
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4">
             <div>
-              <div style={{ fontWeight: 800, fontSize: 16, color: "#6366f1", marginBottom: 8 }}>AIToolsWeekly</div>
+              <div className="font-extrabold text-base mb-2" style={{ color: "#6366f1" }}>AIToolsWeekly</div>
               <div>Independent reviews of every AI tool since 2023.</div>
             </div>
             <div>
               <p>Affiliate Disclosure: We earn commissions from partner links.</p>
-              <p style={{ marginTop: 8 }}>© 2026 AIToolsWeekly. All rights reserved.</p>
+              <p className="mt-2">© 2026 AIToolsWeekly. All rights reserved.</p>
             </div>
           </div>
         </footer>
