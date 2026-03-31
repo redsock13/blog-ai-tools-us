@@ -181,7 +181,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-3 w-full md:w-auto">
                   {toolOfWeek.features.slice(0, 3).map((f, i) => (
-                    <div key={i} className="rounded-xl px-5 py-3" style={{ background: "rgba(255,255,255,0.03)", minWidth: 220 }}>
+                    <div key={i} className="rounded-xl px-5 py-3" style={{ background: "rgba(255,255,255,0.03)", minWidth: 0 }}>
                       <div className="text-xs mb-1" style={{ color: "#475569" }}>{f.name}</div>
                       <div className="text-sm font-bold" style={{ color: "#818cf8" }}>{f.winner}</div>
                     </div>
